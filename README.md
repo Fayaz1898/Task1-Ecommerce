@@ -80,6 +80,8 @@ Configure Jenkins Credentials:
 Add credentials for Docker Hub in Jenkins.
 
 
+![image](https://github.com/user-attachments/assets/c651e76e-8f66-4b5f-a5d6-8c5fbb4d9a37)
+
 
 
 
