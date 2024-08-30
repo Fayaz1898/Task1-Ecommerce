@@ -22,6 +22,9 @@ Before you begin, ensure you have the following tools installed:
 - [Helm](https://helm.sh/docs/intro/install/)
 - [Jenkins](https://www.jenkins.io/download/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [aws-cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+* configure aws-cli with aws accesskey and secretkey
 
 ## Setup Instructions
 
