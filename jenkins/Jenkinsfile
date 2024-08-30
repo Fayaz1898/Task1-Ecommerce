@@ -1,0 +1,44 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/your-repo.git'
+      }
+    }
+
+    stage('Terraform') {
+      steps {
+        script {
+          sh 'terraform init'
+          sh 'terraform apply -auto-approve'
+        }
+      }
+    }
+
+    stage('Build and Push Docker Images') {
+      steps {
+        script {
+          sh 'cd inventory-service && docker build -t myrepo/inventory-service:latest . && docker push myrepo/inventory-service:latest'
+          sh 'cd ../order-service && docker build -t myrepo/order-service:latest . && docker push myrepo/order-service:latest'
+          sh 'cd ../payment-service && docker build -t myrepo/payment-service:latest . && docker push myrepo/payment-service:latest'
+          sh 'cd ../product-service && docker build -t myrepo/product-service:latest . && docker push myrepo/product-service:latest'
+          sh 'cd ../user-service && docker build -t myrepo/user-service:latest . && docker push myrepo/user-service:latest'
+        }
+      }
+    }
+
+    stage('Deploy Helm Charts') {
+      steps {
+        script {
+          sh 'helm upgrade --install inventory-service ./inventory-service/helm/inventory-service-chart'
+          sh 'helm upgrade --install order-service ./order-service/helm/order-service-chart'
+          sh 'helm upgrade --install payment-service ./payment-service/helm/payment-service-chart'
+          sh 'helm upgrade --install product-service ./product-service/helm/product-service-chart'
+          sh 'helm upgrade --install user-service ./user-service/helm/user-service-chart'
+        }
+      }
+    }
+  }
+}
