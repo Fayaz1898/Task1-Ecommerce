@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/your-repo.git'
+        git 'https://github.com/Fayaz1898/Task1-Ecommerce.git'
       }
     }
 
@@ -20,11 +20,11 @@ pipeline {
     stage('Build and Push Docker Images') {
       steps {
         script {
-          sh 'cd inventory-service && docker build -t myrepo/inventory-service:latest . && docker push myrepo/inventory-service:latest'
-          sh 'cd ../order-service && docker build -t myrepo/order-service:latest . && docker push myrepo/order-service:latest'
-          sh 'cd ../payment-service && docker build -t myrepo/payment-service:latest . && docker push myrepo/payment-service:latest'
-          sh 'cd ../product-service && docker build -t myrepo/product-service:latest . && docker push myrepo/product-service:latest'
-          sh 'cd ../user-service && docker build -t myrepo/user-service:latest . && docker push myrepo/user-service:latest'
+          sh 'cd inventory-service && docker build -t fayaz6202/inventory-service:latest . && docker push fayaz6202/inventory-service:latest'
+          sh 'cd ../order-service && docker build -t fayaz6202/order-service:latest . && docker push fayaz6202/order-service:latest'
+          sh 'cd ../payment-service && docker build -t fayaz6202/payment-service:latest . && docker push fayaz6202/payment-service:latest'
+          sh 'cd ../product-service && docker build -t fayaz6202/product-service:latest . && docker push fayaz6202/product-service:latest'
+          sh 'cd ../user-service && docker build -t fayaz6202/user-service:latest . && docker push fayaz6202/user-service:latest'
         }
       }
     }
